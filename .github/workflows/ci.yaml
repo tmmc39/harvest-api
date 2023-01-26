@@ -1,5 +1,5 @@
 name: CI
-on: push
+on: pull_request
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,6 +23,7 @@ jobs:
         mongodb-version: ${{ matrix.mongodb-version }}
     - name: Run Tests
       env:
-        INFURA_KEY: ${{ secrets.CI_INFURA_KEY }}
-        MATIC_INFURA_KEY: ${{ secrets.CI_MATIC_INFURA_KEY }}
+        MAINNET_RPC_URL: ${{ secrets.CI_MAINNET_RPC_URL }}
+        MATIC_RPC_URL: ${{ secrets.CI_MATIC_RPC_URL }}
+        MAINNET_WS_URL: ${{ secrets.CI_MAINNET_WS_URL }}
       run: yarn test

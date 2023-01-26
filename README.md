@@ -1,3 +1,5 @@
+[![CI](https://github.com/harvestfi/harvest-api/actions/workflows/ci.yaml/badge.svg)](https://github.com/harvestfi/harvest-api/actions/workflows/ci.yaml)
+
 # harvest-api
 
 This repository contains implementation and documentation of the API used by [Harvest.finance](https://harvest.finance).
