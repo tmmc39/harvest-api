@@ -24,6 +24,6 @@ jobs:
     - name: Run Tests
       env:
         MATIC_RPC_URL: https://rpc.ankr.com/polygon
-        MAINNET_RPC_URL: https://rpc.ankr.com/eth
+        MAINNET_RPC_URL: https://eth.llamarpc.com
         MAINNET_WS_URL: wss://eth.llamarpc.com
       run: yarn test
