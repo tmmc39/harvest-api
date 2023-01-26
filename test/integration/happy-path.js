@@ -1,6 +1,3 @@
-require('dotenv').config()
-const { INFURA_URL, BSC_RPC_URL, MATIC_RPC_URL, INFURA_WS_URL } = require('../../src/lib/constants')
-
 const request = require('supertest')
 const assert = require('chai').assert
 const axios = require('axios')
@@ -21,15 +18,6 @@ describe('Happy Paths', function () {
   before(async function () {
     await initDb()
     await clearAllDataTestOnly(Cache)
-
-    console.log(process.env.MAINNET_RPC_URL)
-    console.log(process.env.MAINNET_WS_URL)
-    console.log(process.env.MATIC_RPC_URL)
-
-    console.log(INFURA_URL)
-    console.log(BSC_RPC_URL)
-    console.log(MATIC_RPC_URL)
-    console.log(INFURA_WS_URL)
 
     allVaultsJsonArray = Object.keys(tokensJson)
       .filter(token => tokensJson[token].vaultAddress)
