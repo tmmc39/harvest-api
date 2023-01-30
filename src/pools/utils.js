@@ -7,7 +7,7 @@ const { default: BigNumber } = require('bignumber.js')
 const { getWeeklyCompound, getDailyCompound } = require('../lib/utils')
 const { getTokenPrice } = require('../prices')
 const tokenAddresses = require('../lib/data/addresses.json')
-const { web3Socket, web3 } = require('../lib/web3')
+const { web3 } = require('../lib/web3')
 const { pool: poolContractInfo, potPool: potPoolContractInfo } = require('../lib/web3/contracts')
 
 const getIncentivePoolStats = async (
@@ -167,7 +167,7 @@ const getPoolStatsPerType = async (pool, poolContractData, lpTokenData, weeklyRe
           (rewardTokenAddress === tokenAddresses.iFARM ||
             rewardTokenAddress === tokenAddresses.FARM)
         ) {
-          const wsPoolInstance = new web3Socket.eth.Contract(
+          const poolInstance = new web3.eth.Contract(
             rewardTokenAddress === tokenAddresses.iFARM
               ? potPoolContractInfo.contract.abi
               : poolContractInfo.contract.abi,
@@ -178,7 +178,7 @@ const getPoolStatsPerType = async (pool, poolContractData, lpTokenData, weeklyRe
           const blockTenDaysAgo = Number(mostRecentBlockNumber) - 64000 // Average blocks per day is ~6400, so this is ten days worth
 
           const rewardEvents = (
-            await wsPoolInstance.getPastEvents('RewardAdded', {
+            await poolInstance.getPastEvents('RewardAdded', {
               fromBlock: blockTenDaysAgo,
               toBlock: 'latest',
             })
