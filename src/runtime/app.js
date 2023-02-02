@@ -12,7 +12,8 @@ module.exports = function () {
   const { startPollers } = require('./pollers')
   const initDb = require('../lib/db')
 
-  app.use(cors(CORS_SETTINGS))
+  // app.use(cors(CORS_SETTINGS))
+  app.use(cors())
 
   initRouter(app)
 
