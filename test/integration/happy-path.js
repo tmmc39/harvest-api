@@ -58,7 +58,7 @@ describe('Happy Paths', function () {
         .expect('Content-Type', /json/)
         .expect(200)
         .then(res => {
-          assert.exists(res.body.arbitrum) //add arbitrum
+          assert.exists(res.body.arbitrum)
           assert.exists(res.body.matic)
           assert.exists(res.body.eth)
           assert.exists(res.body.bsc)
