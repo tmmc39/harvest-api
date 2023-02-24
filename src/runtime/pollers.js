@@ -32,6 +32,7 @@ const { Cache } = require('../lib/db/models/cache')
 const { storeData, loadData } = require('../lib/db/models/cache')
 const { getUIData } = require('../lib/data')
 const addresses = require('../lib/data/addresses.json')
+const { shouldGetPoolWithChain, isSpecialPool } = require('../lib/utils')
 
 const getProfitSharingFactor = chain => {
   switch (chain) {
@@ -39,6 +40,8 @@ const getProfitSharingFactor = chain => {
       return 0.92
     case CHAIN_TYPES.MATIC:
       return 0.92
+    case CHAIN_TYPES.ARBITRUM_ONE:
+      return 0.75
     default:
       return 0.7
   }
@@ -50,6 +53,7 @@ const getVaults = async () => {
   let fetchedETHVaults = [],
     fetchedBSCVaults = [],
     fetchedMATICVaults = [],
+    fetchedARBITRUMVaults = [],
     fetchedVaults,
     hasErrors = false
 
@@ -67,6 +71,11 @@ const getVaults = async () => {
 
   const maticVaultsBatches = chunk(
     Object.keys(tokensWithVault).filter(tokenId => tokens[tokenId].chain === CHAIN_TYPES.MATIC),
+    GET_VAULT_DATA_BATCH_SIZE,
+  )
+
+  const arbitrumVaultsBatches = chunk(
+    Object.keys(tokensWithVault).filter(tokenId => tokens[tokenId].chain === CHAIN_TYPES.ARBITRUM_ONE),
     GET_VAULT_DATA_BATCH_SIZE,
   )
 
@@ -96,6 +105,21 @@ const getVaults = async () => {
   })
   console.log('\n-- Done getting MATIC vaults data --')
 
+  console.log('\n-- Getting ARBITRUM vaults data --')
+  await forEach(arbitrumVaultsBatches, async batch => {
+    if (batch) {
+      try {
+        console.log('Getting vault data for: ', batch)
+        const vaultsData = await getVaultsData(batch)
+        fetchedARBITRUMVaults = fetchedARBITRUMVaults.concat(vaultsData)
+      } catch (err) {
+        hasErrors = true
+        console.error(`Failed to get vault data for: ${batch}`, err)
+      }
+    }
+  })
+  console.log('\n-- Done getting ARBITRUM vaults data --')
+
   console.log('\n-- Getting ETH vaults data --')
   await forEach(ethVaultsBatches, async batch => {
     try {
@@ -119,6 +143,10 @@ const getVaults = async () => {
       return acc
     }, {}),
     matic: fetchedMATICVaults.reduce((acc, vault) => {
+      acc[vault.id] = vault
+      return acc
+    }, {}),
+    arbitrum: fetchedARBITRUMVaults.reduce((acc, vault) => {
       acc[vault.id] = vault
       return acc
     }, {}),
@@ -198,6 +226,7 @@ const getPools = async () => {
   let fetchedBSCPools = [],
     fetchedETHPools = [],
     fetchedMATICPools = [],
+    fetchedARBITRUMPools = [],
     fetchedPools = [],
     hasErrors
 
@@ -235,6 +264,24 @@ const getPools = async () => {
 
     console.log('-- Done getting MATIC pool data --\n')
 
+    console.log('\n-- Getting ARBITRUM pool data --')
+
+    const arbitrumPoolBatches = chunk(
+      pools.filter(pool => pool.chain === CHAIN_TYPES.ARBITRUM_ONE),
+      GET_POOL_DATA_BATCH_SIZE,
+    )
+
+    if (size(arbitrumPoolBatches)) {
+      await forEach(arbitrumPoolBatches, async poolBatch => {
+        const poolData = await getPoolsData(poolBatch)
+        fetchedARBITRUMPools = fetchedARBITRUMPools.concat(poolData)
+      })
+    } else {
+      console.log('No pools available')
+    }
+
+    console.log('-- Done getting ARBITRUM pool data --\n')
+
     console.log('\n-- Getting ETH pool data --')
 
     const ethPoolBatches = chunk(
@@ -259,6 +306,7 @@ const getPools = async () => {
     bsc: fetchedBSCPools,
     eth: fetchedETHPools,
     matic: fetchedMATICPools,
+    arbitrum: fetchedARBITRUMPools,
   }
   hasErrors =
     (isArray(fetchedBSCPools) &&
@@ -266,7 +314,9 @@ const getPools = async () => {
     (isArray(fetchedETHPools) &&
       (fetchedETHPools.includes(undefined) || fetchedETHPools.includes(null))) ||
     (isArray(fetchedMATICPools) &&
-      (fetchedMATICPools.includes(undefined) || fetchedMATICPools.includes(null)))
+      (fetchedMATICPools.includes(undefined) || fetchedMATICPools.includes(null))) ||
+    (isArray(fetchedARBITRUMPools) &&
+      (fetchedARBITRUMPools.includes(undefined) || fetchedARBITRUMPools.includes(null)))
 
   await storeData(
     Cache,

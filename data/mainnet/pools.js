@@ -5,6 +5,430 @@ const strat30PercentFactor = '0.7'
 
 module.exports = [
   {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Crv2Pool_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.Crv2Pool_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.Crv2Pool_Strategy.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://arbitrum.curve.fi/2pool/deposit"
+            >
+             Arbitrum Curve
+            </a>
+            and add assets to <b>2Pool</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.ARBITRUM_CURVE,
+      params: ['2pool'],
+    },
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'CrvEursUsd_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.CrvEursUsd_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.CrvEursUsd_Strategy.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://arbitrum.curve.fi/eursusd/deposit"
+            >
+             Arbitrum Curve
+            </a>
+            and add assets to <b>EursUsd</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.ARBITRUM_CURVE,
+      params: ['eursusd'],
+    },
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'CrvRenWbtc_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.CrvRenWbtc_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.CrvRenWbtc_Strategy.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://arbitrum.curve.fi/ren/deposit"
+            >
+             Arbitrum Curve
+            </a>
+            and add assets to <b>RenWbtc</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.ARBITRUM_CURVE,
+      params: ['ren'],
+    },
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'CrvTriCrypto_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.CrvTriCrypto_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.CrvTriCrypto_Strategy.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://arbitrum.curve.fi/tricrypto/deposit"
+            >
+             Arbitrum Curve
+            </a>
+            and add assets to <b>TriCrypto</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.ARBITRUM_CURVE,
+      params: ['tricrypto'],
+    },
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'StargateUSDC_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.StargateUSDC_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.StargateUSDC_Strategy.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://stargate.finance/pool/USDC-ARBITRUM"
+            >
+             Arbitrum Stargate Finance
+            </a>
+            and add <b>USDC</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'StargateUSDT_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.StargateUSDT_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.StargateUSDT_Strategy.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://stargate.finance/pool/USDT-ARBITRUM"
+            >
+             Arbitrum Stargate Finance
+            </a>
+            and add <b>USDT</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Sushi_ETHDAI_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.EthDaiSushi_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.EthDaiSushi_Strategy.NewVault,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.ARBITRUM_ONE.EthDaiSushi_Strategy.Underlying, 'sushiswap_arbitrum'],
+    },
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://app.sushi.com/farm?chainId=42161"
+            >
+             Arbitrum Sushi
+            </a>
+            and add <b>ETH-DAI</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Sushi_ETHGOHM_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.EthGOhmSushi_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.EthGOhmSushi_Strategy.NewVault,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.ARBITRUM_ONE.EthGOhmSushi_Strategy.Underlying, 'sushiswap_arbitrum'],
+    },
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://app.sushi.com/farm?chainId=42161"
+            >
+             Arbitrum Sushi
+            </a>
+            and add <b>ETH-GOHM</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Sushi_ETHMAGIC_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.EthMagicSushi_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.EthMagicSushi_Strategy.NewVault,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.ARBITRUM_ONE.EthMagicSushi_Strategy.Underlying, 'sushiswap_arbitrum'],
+    },
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://app.sushi.com/farm?chainId=42161"
+            >
+             Arbitrum Sushi
+            </a>
+            and add <b>ETH-MAGIC</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Sushi_ETHMIM_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.EthMimSushi_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.EthMimSushi_Strategy.NewVault,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.ARBITRUM_ONE.EthMimSushi_Strategy.Underlying, 'sushiswap_arbitrum'],
+    },
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://app.sushi.com/farm?chainId=42161"
+            >
+             Arbitrum Sushi
+            </a>
+            and add <b>ETH-MIM</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Sushi_ETHSPELL_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.EthSpellSushi_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.EthSpellSushi_Strategy.NewVault,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.ARBITRUM_ONE.EthSpellSushi_Strategy.Underlying, 'sushiswap_arbitrum'],
+    },
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://app.sushi.com/farm?chainId=42161"
+            >
+             Arbitrum Sushi
+            </a>
+            and add <b>ETH-SPELL</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'Sushi_ETHSUSHI_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.EthSushiSushi_Strategy.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.EthSushiSushi_Strategy.NewVault,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.ARBITRUM_ONE.EthSushiSushi_Strategy.Underlying, 'sushiswap_arbitrum'],
+    },
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://app.sushi.com/farm?chainId=42161"
+            >
+             Arbitrum Sushi
+            </a>
+            and add <b>ETH-SUSHI</b> on the <i>Pool</i> page
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+      </div>
+   `,
+  },
+  {
     chain: CHAINS_ID.MATIC_MAINNET,
     id: 'quickGamma_MATIC_ETH_narrow',
     type: POOL_TYPES.INCENTIVE,
