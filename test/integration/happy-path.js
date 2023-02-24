@@ -83,7 +83,10 @@ describe('Happy Paths', function () {
           assert(res.body.eth)
           assert(res.body.bsc)
           assert.equal(
-            res.body.matic.length + res.body.eth.length + res.body.bsc.length + res.body.arbitrum.length,
+            res.body.matic.length +
+              res.body.eth.length +
+              res.body.bsc.length +
+              res.body.arbitrum.length,
             poolsJson.length,
           )
         })
