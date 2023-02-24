@@ -15,7 +15,6 @@ const getPrice = async (token, underlyingToken) => {
   }
 
   const tokens = await getUIData(UI_DATA_FILES.TOKENS)
-  const decimals = tokens[underlyingToken].decimals
 
   const web3Instance = getWeb3(tokens[token].chain)
   const stargateInstance = new web3Instance.eth.Contract(

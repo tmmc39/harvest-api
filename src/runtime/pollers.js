@@ -32,7 +32,6 @@ const { Cache } = require('../lib/db/models/cache')
 const { storeData, loadData } = require('../lib/db/models/cache')
 const { getUIData } = require('../lib/data')
 const addresses = require('../lib/data/addresses.json')
-const { shouldGetPoolWithChain, isSpecialPool } = require('../lib/utils')
 
 const getProfitSharingFactor = chain => {
   switch (chain) {
@@ -75,7 +74,9 @@ const getVaults = async () => {
   )
 
   const arbitrumVaultsBatches = chunk(
-    Object.keys(tokensWithVault).filter(tokenId => tokens[tokenId].chain === CHAIN_TYPES.ARBITRUM_ONE),
+    Object.keys(tokensWithVault).filter(
+      tokenId => tokens[tokenId].chain === CHAIN_TYPES.ARBITRUM_ONE,
+    ),
     GET_VAULT_DATA_BATCH_SIZE,
   )
 

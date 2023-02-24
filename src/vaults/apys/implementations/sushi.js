@@ -29,7 +29,7 @@ const getSushiPoolWeight = async (poolInfo, sushiInstance) => {
   return new BigNumber(poolInfo.allocPoint).div(new BigNumber(totalAllocPoint))
 }
 
-const OneEthInWei = '1000000000000000000';
+const OneEthInWei = '1000000000000000000'
 
 const getApy = async (poolId, firstToken, secondToken, reduction, chain) => {
   const {
@@ -43,8 +43,8 @@ const getApy = async (poolId, firstToken, secondToken, reduction, chain) => {
     selectedChain === CHAIN_TYPES.MATIC
       ? sushiMasterContractMatic
       : selectedChain === CHAIN_TYPES.ARBITRUM_ONE
-        ? sushiMasterContractArbitrum
-        : sushiMasterContract
+      ? sushiMasterContractArbitrum
+      : sushiMasterContract
 
   let apy,
     sushiPerBlock,
@@ -73,17 +73,17 @@ const getApy = async (poolId, firstToken, secondToken, reduction, chain) => {
     poolInfo.lpToken = await getSushiLpToken(poolId, sushiInstance)
     sushiPerSecond = new BigNumber(await getSushiPerSecond(sushiInstance)).dividedBy(OneEthInWei)
 
-    const rewarder = await getRewarder(poolId, sushiInstance);
+    const rewarder = await getRewarder(poolId, sushiInstance)
     if (rewarder !== '0x0000000000000000000000000000000000000000') {
-      const rewarderInstance = new selectedWeb3.eth.Contract(
-        rewarderContractArbitrum.abi,
-        rewarder,
-      )
-      const rewardToken = await getRewardToken(rewarderInstance);
-      const rewardTokenPerSecond = await getRewardPerSecond(rewarderInstance);
-      const rewardTokenPrice = await getTokenPrice(rewardToken, CHAIN_TYPES.ARBITRUM_ONE);
+      const rewarderInstance = new selectedWeb3.eth.Contract(rewarderContractArbitrum.abi, rewarder)
+      const rewardToken = await getRewardToken(rewarderInstance)
+      const rewardTokenPerSecond = await getRewardPerSecond(rewarderInstance)
+      const rewardTokenPrice = await getTokenPrice(rewardToken, CHAIN_TYPES.ARBITRUM_ONE)
       sushiPerSecond = sushiPerSecond.plus(
-        new BigNumber(rewardTokenPerSecond).dividedBy(OneEthInWei).times(rewardTokenPrice).dividedBy(sushiPriceInUsd)
+        new BigNumber(rewardTokenPerSecond)
+          .dividedBy(OneEthInWei)
+          .times(rewardTokenPrice)
+          .dividedBy(sushiPriceInUsd),
       )
     }
   } else {
