@@ -30,7 +30,7 @@ const executeBalancerCall = (type, query, networkId) => {
     })
 }
 
-const getPoolInfo = async (poolId, networkId) => {
+const getPoolInfo = (poolId, networkId) => {
   if (networkId == CHAIN_TYPES.ETH) {
     return getPoolInfoSubgraph(poolId, networkId)
   } else if (networkId == CHAIN_TYPES.MATIC) {
@@ -38,12 +38,37 @@ const getPoolInfo = async (poolId, networkId) => {
   }
 }
 
-const getPoolInfoSubgraph = (poolId, networkId) => {
-  const query = `query {
-    pools (where: {id: "${poolId}"}) { swapFee totalLiquidity }
+const getPoolInfoSubgraph = async (poolId, networkId) => {
+  const poolQuery = `query {
+    pools (where: {id: "${poolId}"}) { 
+      totalLiquidity tokensList
+      tokens (id: "${poolId}") { balance priceRate  }}
   }`
-  let result = executeBalancerCall('pools[0]', query, networkId)
-  return result
+
+  const poolInfo = await executeBalancerCall('pools[0]', poolQuery, networkId)
+
+  const tokensList = poolInfo.tokensList
+  const tokens = poolInfo.tokens
+
+  let tokenValues = {}
+  await Promise.all(
+    tokensList.map(async (token, index) => {
+      const balance = new BigNumber(tokens[index].balance)
+      const rate = new BigNumber(tokens[index].priceRate)
+
+      const tokenQuery = `query {
+        token (id: "${token}") { latestUSDPrice}
+      }`
+
+      const price = new BigNumber(
+        await executeBalancerCall('token.latestUSDPrice', tokenQuery, networkId),
+      )
+
+      tokenValues[token] = balance.times(rate).times(price)
+    }),
+  )
+
+  return { totalLiquidity: poolInfo.totalLiquidity, tokenValues: tokenValues }
 }
 
 const getPoolInfoOnChain = async (poolId, networkId) => {
@@ -60,6 +85,7 @@ const getPoolInfoOnChain = async (poolId, networkId) => {
 
   const tokenInfo = await getPoolTokens(poolId, balancerVaultInstance)
   const lpToken = await getLpToken(poolId, balancerVaultInstance)
+  let tokenValues = {}
   let totalValue = new BigNumber(0)
   for (let i = 0; i < tokenInfo.tokens.length; i++) {
     const token = tokenInfo.tokens[i]
@@ -71,9 +97,10 @@ const getPoolInfoOnChain = async (poolId, networkId) => {
     const amount = new BigNumber(tokenInfo.balances[i]).div(10 ** tokenDecimals)
     const tokenPrice = await getTokenPrice(token, networkId)
     const tokenValue = amount.times(tokenPrice)
+    tokenValues[token] = tokenValue
     totalValue = totalValue.plus(tokenValue)
   }
-  return { totalLiquidity: totalValue.toFixed() }
+  return { totalLiquidity: totalValue.toFixed(), tokenValues: tokenValues }
 }
 
 const getPoolSnapshot = (poolId, timestamp, networkId) => {

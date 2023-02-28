@@ -66,6 +66,7 @@ const ESTIMATED_APY_TYPES = {
   MSTABLE: 'MSTABLE',
   LOOKSRARE_SINGLE_ASSET: 'LOOKSRARE_SINGLE_ASSET',
   STAKEWISE: 'STAKEWISE',
+  AURA: 'AURA',
 }
 
 const TRADING_APY_TYPES = {
@@ -95,7 +96,7 @@ const ENDPOINT_TYPES = {
 }
 
 const CORS_SETTINGS = {
-  origin: ['http://localhost:3000']
+  origin: ['https://localhost:3000']
     .concat(process.env.CORS_STRINGS ? process.env.CORS_STRINGS.split(';') : [])
     .concat(
       process.env.CORS_REGEXPS
@@ -145,7 +146,7 @@ const BASIS_POOL_IDS = {
   'BAS-DAI': 2,
 }
 
-const HISTORICAL_AVERAGE_PROFIT_SHARING_APY_DAYS = 7
+const HISTORICAL_AVERAGE_PROFIT_SHARING_APY_DAYS = 14
 const HISTORICAL_AVERAGE_PROFIT_SHARING_APY_ENDPOINT = `https://ethparser-api.herokuapp.com/apy/average/0x25550cccbd68533fa04bfd3e3ac4d09f9e00fc50?days=${HISTORICAL_AVERAGE_PROFIT_SHARING_APY_DAYS}`
 
 const TOTAL_GAS_SAVED_ENDPOINT = `https://ethparser-api.herokuapp.com/last_saved_gas_sum`
@@ -188,10 +189,15 @@ const BALANCER_SUBGRAPH_URLS = {
   MATIC: 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-polygon-v2',
 }
 
+const LIDO_API_URLS = { ETH: 'https://eth-api.lido.fi/v1/protocol/steth/apr/sma' }
+const ROCKETPOOL_API_URLS = { ETH: 'https://api.rocketpool.net/api/apr' }
+
 const STAKEWISE_API_URLS = {
   LIQUIDITY: 'https://api.stakewise.io/uniswap-pools/',
   STAKING: 'https://api.stakewise.io/pool-stats/',
 }
+
+const QUICKSWAP_GAMMA_ENDPOINT = 'https://wire2.gamma.xyz/quickswap/polygon/'
 
 const DEBUG_MODE = process.env.DEBUG_MODE
 
@@ -272,6 +278,9 @@ module.exports = {
   MATIC_RPC_URL,
   TRADING_APY_TYPES,
   BALANCER_SUBGRAPH_URLS,
+  LIDO_API_URLS,
+  ROCKETPOOL_API_URLS,
   STAKEWISE_API_URLS,
   APE_API_URL,
+  QUICKSWAP_GAMMA_ENDPOINT,
 }
