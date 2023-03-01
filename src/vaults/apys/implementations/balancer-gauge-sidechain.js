@@ -1,11 +1,10 @@
 const BigNumber = require('bignumber.js')
 const { getWeb3 } = require('../../../lib/web3')
 const { getTokenPrice } = require('../../../prices')
-const { CHAIN_TYPES } = require('../../../lib/constants')
 const { balGauge } = require('../../../lib/web3/contracts')
 
-const getApy = async (tokenSymbol, gaugeAddress, factor) => {
-  const web3Polygon = getWeb3(CHAIN_TYPES.MATIC)
+const getApy = async (tokenSymbol, gaugeAddress, factor, chainId) => {
+  const web3 = getWeb3(chainId)
   const MAX_REWARD_TOKENS = 8
   const ZeroAddress = '0x0000000000000000000000000000000000000000'
   const {
@@ -13,7 +12,7 @@ const getApy = async (tokenSymbol, gaugeAddress, factor) => {
     methods: balGaugeMethods,
   } = balGauge
 
-  const balGaugeInstance = new web3Polygon.eth.Contract(balGaugeAbi, gaugeAddress)
+  const balGaugeInstance = new web3.eth.Contract(balGaugeAbi, gaugeAddress)
 
   let rewardTokens = []
 
@@ -24,7 +23,7 @@ const getApy = async (tokenSymbol, gaugeAddress, factor) => {
   const totalSupply = new BigNumber(
     await balGaugeMethods.getTotalSupply(balGaugeInstance),
   ).dividedBy(new BigNumber(1e18))
-  const lpTokenPrice = new BigNumber(await getTokenPrice(tokenSymbol, CHAIN_TYPES.MATIC))
+  const lpTokenPrice = new BigNumber(await getTokenPrice(tokenSymbol, chainId))
 
   let totalRewardPerWeekUsd = new BigNumber(0)
   for (let i = 0; i < rewardTokens.length; i++) {
@@ -40,7 +39,7 @@ const getApy = async (tokenSymbol, gaugeAddress, factor) => {
       const shareForOneBpt = new BigNumber(1).dividedBy(totalSupply).plus(1)
       const rewardPerWeek = shareForOneBpt.times(tokenPerWeek)
 
-      const rewardTokenInUsd = await getTokenPrice(rewardToken, CHAIN_TYPES.MATIC)
+      const rewardTokenInUsd = await getTokenPrice(rewardToken, chainId)
       const rewardPerWeekUsd = rewardPerWeek.times(rewardTokenInUsd)
       totalRewardPerWeekUsd = totalRewardPerWeekUsd.plus(rewardPerWeekUsd)
     }
