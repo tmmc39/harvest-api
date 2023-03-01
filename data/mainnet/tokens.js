@@ -13,7 +13,7 @@ const addresses = require('./addresses.json')
 const profitSharingCut8Percent = '0.92'
 const profitSharingCut15Percent = '0.85'
 const profitSharingCut30Percent = '0.7'
-const arbitrumProfitSharingPercent = '0.75'
+const profitSharingCut25Percent = '0.75'
 
 module.exports = {
   FARM: {
@@ -55,14 +55,15 @@ module.exports = {
     vaultAddress: null,
     priceFunction: { type: GET_PRICE_TYPES.F_TOKEN, params: [addresses.iFARM, '18'] },
   },
-  Crv2Pool_arbitrum: {
+  Curve_2pool_arbitrum: {
     chain: CHAINS_ID.ARBITRUM_ONE,
-    category: VAULT_CATEGORIES_IDS.CURVE,
+    category: [VAULT_CATEGORIES_IDS.CURVE, VAULT_CATEGORIES_IDS.STABLECOINS],
     logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#2pool',
     decimals: '18',
-    tokenAddress: addresses.ARBITRUM_ONE.Crv2Pool_Strategy.Underlying,
-    displayName: 'CRV:2Pool',
-    vaultAddress: addresses.ARBITRUM_ONE.Crv2Pool_Strategy.NewVault,
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.Underlying,
+    displayName: 'USDC-USDT',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.CURVE_POOL,
       params: [
@@ -76,50 +77,52 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
-        params: [addresses.ARBITRUM_ONE.Crv2Pool, arbitrumProfitSharingPercent],
+        params: [addresses.ARBITRUM_ONE.Crv2Pool, profitSharingCut25Percent],
       },
     ],
     apyIconUrls: ['./icons/curve.png'],
     apyTokenSymbols: ['CRV'],
     cmcRewardTokenSymbols: ['iFARM', 'CRV'],
   },
-  CrvEursUsd_arbitrum: {
+  Curve_EursUsd_arbitrum: {
     inactive: true,
     chain: CHAINS_ID.ARBITRUM_ONE,
     category: VAULT_CATEGORIES_IDS.CURVE,
     logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#eurs',
     decimals: '18',
-    tokenAddress: addresses.ARBITRUM_ONE.CrvEursUsd_Strategy.Underlying,
-    displayName: 'CRV:EursUsd',
-    vaultAddress: addresses.ARBITRUM_ONE.CrvEursUsd_Strategy.NewVault,
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.Underlying,
+    displayName: 'EURS-USD',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.CURVE_POOL,
       params: [
         addresses.ARBITRUM_ONE.CrvEursUsdPool,
         addresses.ARBITRUM_ONE.CrvEursUsdPoolToken,
         '18',
-        ['EURS_arbitrum', 'Crv2Pool_arbitrum'],
+        ['EURS_arbitrum', 'Curve_2pool_arbitrum'],
         CHAINS_ID.ARBITRUM_ONE,
       ],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
-        params: [addresses.ARBITRUM_ONE.CrvEursUsdPool, arbitrumProfitSharingPercent],
+        params: [addresses.ARBITRUM_ONE.CrvEursUsdPool, profitSharingCut25Percent],
       },
     ],
     apyIconUrls: [],
     apyTokenSymbols: [],
     cmcRewardTokenSymbols: ['iFARM', 'CRV'],
   },
-  CrvRenWbtc_arbitrum: {
+  Curve_RenWbtc_arbitrum: {
     chain: CHAINS_ID.ARBITRUM_ONE,
     category: VAULT_CATEGORIES_IDS.CURVE,
     logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#renbtc',
     decimals: '18',
-    tokenAddress: addresses.ARBITRUM_ONE.CrvRenWbtc_Strategy.Underlying,
-    displayName: 'CRV:RenWbtc',
-    vaultAddress: addresses.ARBITRUM_ONE.CrvRenWbtc_Strategy.NewVault,
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.Underlying,
+    displayName: 'RENBTC-WBTC',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.CURVE_POOL,
       params: [
@@ -133,21 +136,22 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
-        params: [addresses.ARBITRUM_ONE.CrvRenWbtcPool, arbitrumProfitSharingPercent],
+        params: [addresses.ARBITRUM_ONE.CrvRenWbtcPool, profitSharingCut25Percent],
       },
     ],
     apyIconUrls: ['./icons/curve.png'],
     apyTokenSymbols: ['CRV'],
     cmcRewardTokenSymbols: ['iFARM', 'CRV'],
   },
-  CrvTriCrypto_arbitrum: {
+  Curve_TriCrypto_arbitrum: {
     chain: CHAINS_ID.ARBITRUM_ONE,
     category: VAULT_CATEGORIES_IDS.CURVE,
     logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#tricrypto',
     decimals: '18',
-    tokenAddress: addresses.ARBITRUM_ONE.CrvTriCrypto_Strategy.Underlying,
-    displayName: 'CRV:TriCryptoV2',
-    vaultAddress: addresses.ARBITRUM_ONE.CrvTriCrypto_Strategy.NewVault,
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.Underlying,
+    displayName: 'WBTC-WETH-USDT',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.CURVE_POOL,
       params: [
@@ -161,7 +165,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
-        params: [addresses.ARBITRUM_ONE.CrvTriCryptoPool, arbitrumProfitSharingPercent],
+        params: [addresses.ARBITRUM_ONE.CrvTriCryptoPool, profitSharingCut25Percent],
       },
     ],
     apyIconUrls: ['./icons/curve.png'],
@@ -230,7 +234,8 @@ module.exports = {
     logoUrl: './icons/usdc.png',
     decimals: '6',
     tokenAddress: addresses.ARBITRUM_ONE.StargateUSDC_Strategy.Underlying,
-    displayName: 'Stargate:USDC',
+    displayName: 'S*USDC',
+    subLabel: 'Stargate',
     vaultAddress: addresses.ARBITRUM_ONE.StargateUSDC_Strategy.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.STARGATE_LP_TOKEN,
@@ -244,7 +249,7 @@ module.exports = {
           addresses.ARBITRUM_ONE.StargateRewardPool,
           'StargateUSDC_arbitrum',
           'STG_arbitrum',
-          arbitrumProfitSharingPercent,
+          profitSharingCut25Percent,
           CHAINS_ID.ARBITRUM_ONE,
         ],
       },
@@ -260,7 +265,8 @@ module.exports = {
     logoUrl: './icons/usdt.png',
     decimals: '6',
     tokenAddress: addresses.ARBITRUM_ONE.StargateUSDT_Strategy.Underlying,
-    displayName: 'Stargate:USDT',
+    displayName: 'S*USDT',
+    subLabel: 'Stargate',
     vaultAddress: addresses.ARBITRUM_ONE.StargateUSDT_Strategy.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.STARGATE_LP_TOKEN,
@@ -274,7 +280,7 @@ module.exports = {
           addresses.ARBITRUM_ONE.StargateRewardPool,
           'StargateUSDT_arbitrum',
           'STG_arbitrum',
-          arbitrumProfitSharingPercent,
+          profitSharingCut25Percent,
           CHAINS_ID.ARBITRUM_ONE,
         ],
       },
@@ -289,7 +295,8 @@ module.exports = {
     logoUrl: './icons/eth_dai.png',
     apyIconUrls: ['./icons/sushi.png'],
     apyTokenSymbols: ['SUSHI'],
-    displayName: 'SushiSwap: ETH-DAI',
+    displayName: 'ETH-DAI',
+    subLabel: 'SushiSwap',
     tokenAddress: addresses.ARBITRUM_ONE.EthDaiSushi_Strategy.Underlying,
     decimals: '18',
     vaultAddress: addresses.ARBITRUM_ONE.EthDaiSushi_Strategy.NewVault,
@@ -321,7 +328,8 @@ module.exports = {
     logoUrl: './icons/eth-gohm.png',
     apyIconUrls: ['./icons/sushi.png', './icons/ohm.png'],
     apyTokenSymbols: ['SUSHI', 'GOHM'],
-    displayName: 'SushiSwap: ETH-GOHM',
+    displayName: 'ETH-GOHM',
+    subLabel: 'SushiSwap',
     tokenAddress: addresses.ARBITRUM_ONE.EthGOhmSushi_Strategy.Underlying,
     decimals: '18',
     vaultAddress: addresses.ARBITRUM_ONE.EthGOhmSushi_Strategy.NewVault,
@@ -353,7 +361,8 @@ module.exports = {
     logoUrl: './icons/eth-magic.png',
     apyIconUrls: ['./icons/sushi.png', './icons/magic.png'],
     apyTokenSymbols: ['SUSHI', 'MAGIC'],
-    displayName: 'SushiSwap: ETH-MAGIC',
+    displayName: 'ETH-MAGIC',
+    subLabel: 'SushiSwap',
     tokenAddress: addresses.ARBITRUM_ONE.EthMagicSushi_Strategy.Underlying,
     decimals: '18',
     vaultAddress: addresses.ARBITRUM_ONE.EthMagicSushi_Strategy.NewVault,
@@ -385,7 +394,8 @@ module.exports = {
     logoUrl: './icons/eth-mim.png',
     apyIconUrls: ['./icons/sushi.png', './icons/spell.png'],
     apyTokenSymbols: ['SUSHI', 'SPELL'],
-    displayName: 'SushiSwap: ETH-MIM',
+    displayName: 'ETH-MIM',
+    subLabel: 'SushiSwap',
     tokenAddress: addresses.ARBITRUM_ONE.EthMimSushi_Strategy.Underlying,
     decimals: '18',
     vaultAddress: addresses.ARBITRUM_ONE.EthMimSushi_Strategy.NewVault,
@@ -417,7 +427,8 @@ module.exports = {
     logoUrl: './icons/eth-spell.png',
     apyIconUrls: ['./icons/sushi.png', './icons/spell.png'],
     apyTokenSymbols: ['SUSHI', 'SPELL'],
-    displayName: 'SushiSwap: ETH-SPELL',
+    displayName: 'ETH-SPELL',
+    subLabel: 'SushiSwap',
     tokenAddress: addresses.ARBITRUM_ONE.EthSpellSushi_Strategy.Underlying,
     decimals: '18',
     vaultAddress: addresses.ARBITRUM_ONE.EthSpellSushi_Strategy.NewVault,
@@ -449,7 +460,8 @@ module.exports = {
     logoUrl: './icons/sushi-eth.png',
     apyIconUrls: ['./icons/sushi.png'],
     apyTokenSymbols: ['SUSHI'],
-    displayName: 'SushiSwap: ETH-SUSHI',
+    displayName: 'ETH-SUSHI',
+    subLabel: 'SushiSwap',
     tokenAddress: addresses.ARBITRUM_ONE.EthSushiSushi_Strategy.Underlying,
     decimals: '18',
     vaultAddress: addresses.ARBITRUM_ONE.EthSushiSushi_Strategy.NewVault,
