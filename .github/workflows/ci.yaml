@@ -26,4 +26,5 @@ jobs:
         MATIC_RPC_URL: https://rpc.ankr.com/polygon
         MAINNET_RPC_URL: https://eth.llamarpc.com
         MAINNET_WS_URL: wss://eth.llamarpc.com
+        ARBITRUM_RPC_URL: https://rpc.ankr.com/arbitrum
       run: yarn test
