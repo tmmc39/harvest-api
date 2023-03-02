@@ -6,6 +6,118 @@ const strat30PercentFactor = '0.7'
 module.exports = [
   {
     chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'balancer_wstETH_wETH_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Underlying,
+        'balancerv2_arbitrum',
+        true,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    contractAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM_arbitrum'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.PoolId}">
+            balancer
+          </a>
+          and invest <b>ETH</b>
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'balancer_wstETH_USDC_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Underlying,
+        'balancerv2_arbitrum',
+        true,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    contractAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM_arbitrum'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.PoolId}">
+            balancer
+          </a>
+          and invest <b>ETH</b> and/or <b>USDC</b>
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'balancer_wBTC_wETH_USDC_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
+        'balancerv2_arbitrum',
+      ],
+    },
+    contractAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM_arbitrum'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.PoolId}">
+            balancer
+          </a>
+          and invest <b>wBTC</b>, <b>ETH</b> and/or <b>USDC</b>
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Curve_2pool_arbitrum',
     type: POOL_TYPES.INCENTIVE,
     contractAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewPool,

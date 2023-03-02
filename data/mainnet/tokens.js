@@ -11,6 +11,7 @@ const {
 const addresses = require('./addresses.json')
 
 const profitSharingCut8Percent = '0.92'
+const profitSharingCut10Percent = '0.90'
 const profitSharingCut15Percent = '0.85'
 const profitSharingCut30Percent = '0.7'
 const profitSharingCut25Percent = '0.75'
@@ -46,6 +47,105 @@ module.exports = {
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'WETH'],
+  },
+  balancer_wstETH_wETH_arbitrum: {
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.BALANCER,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wsteth-eth.png',
+    apyIconUrls: ['./icons/balancer.png', './icons/ldo.png'],
+    apyTokenSymbols: ['BAL', 'LDO'],
+    displayName: 'wstETH-ETH',
+    subLabel: 'Balancer',
+    tokenAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.PoolId,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_wstETH_wETH_arbitrum',
+          addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Gauge,
+          profitSharingCut10Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BAL'],
+  },
+  balancer_wstETH_USDC_arbitrum: {
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.BALANCER,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wsteth-usdc.png',
+    apyIconUrls: ['./icons/balancer.png', './icons/ldo.png'],
+    apyTokenSymbols: ['BAL', 'LDO'],
+    displayName: 'wstETH-USDC',
+    subLabel: 'Balancer',
+    tokenAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.PoolId,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_wstETH_USDC_arbitrum',
+          addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Gauge,
+          profitSharingCut10Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BAL'],
+  },
+  balancer_wBTC_wETH_USDC_arbitrum: {
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.BALANCER,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wbtc-eth-usdc.png',
+    apyIconUrls: ['./icons/balancer.png'],
+    apyTokenSymbols: ['BAL'],
+    displayName: 'wBTC-ETH-USDC',
+    subLabel: 'Balancer',
+    tokenAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.PoolId,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_wBTC_wETH_USDC_arbitrum',
+          addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Gauge,
+          profitSharingCut10Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BAL'],
   },
   iFARM_arbitrum: {
     chain: CHAINS_ID.ARBITRUM_ONE,
@@ -692,11 +792,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_2EUR_agEUR',
           addresses.MATIC.V2.balancer_2EUR_agEUR.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -724,11 +825,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_2EUR_PAR',
           addresses.MATIC.V2.balancer_2EUR_PAR.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -1035,11 +1137,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_bbamusd',
           addresses.MATIC.V2.balancer_bbamusd.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -1097,11 +1200,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_tetuBal',
           addresses.MATIC.V2.balancer_tetuBal.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -1129,11 +1233,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_2BRLUSD',
           addresses.MATIC.V2.balancer_2BRLUSD.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -1183,8 +1288,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['balancer_2BRL', addresses.MATIC.V2.balancer_2BRL.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_2BRL',
+          addresses.MATIC.V2.balancer_2BRL.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL', 'SD'],
@@ -1211,8 +1321,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['bal_MaticX', addresses.MATIC.V2.bal_MaticX.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'bal_MaticX',
+          addresses.MATIC.V2.bal_MaticX.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL'],
@@ -1239,8 +1354,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['bal_stMatic', addresses.MATIC.V2.bal_stMatic.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'bal_stMatic',
+          addresses.MATIC.V2.bal_stMatic.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL', 'LDO'],
@@ -1266,11 +1386,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'bal_POLYBASE',
           addresses.MATIC.V2.balancer_POLYBASE.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -3765,11 +3886,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'bal_USDC_WETH_polygon',
           addresses.MATIC.V2.bal_USDC_WETH_polygon.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -9643,8 +9765,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['bal_STABLE', addresses.MATIC.V2.balancer_STABLE.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'bal_STABLE',
+          addresses.MATIC.V2.balancer_STABLE.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL'],

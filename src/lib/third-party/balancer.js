@@ -33,7 +33,7 @@ const executeBalancerCall = (type, query, networkId) => {
 const getPoolInfo = (poolId, networkId) => {
   if (networkId == CHAIN_TYPES.ETH) {
     return getPoolInfoSubgraph(poolId, networkId)
-  } else if (networkId == CHAIN_TYPES.MATIC) {
+  } else {
     return getPoolInfoOnChain(poolId, networkId)
   }
 }
