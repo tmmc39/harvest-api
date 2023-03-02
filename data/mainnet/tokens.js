@@ -48,6 +48,38 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['FARM', 'WETH'],
   },
+  aura_bbiUSD: {
+    isNew: true,
+    chain: CHAINS_ID.ETH_MAINNET,
+    category: [
+      VAULT_CATEGORIES_IDS.AURA,
+      VAULT_CATEGORIES_IDS.BALANCER,
+      VAULT_CATEGORIES_IDS.STABLECOINS,
+    ],
+    displayName: 'iDAI-iUSDC-iUSDT',
+    subLabel: 'Idle - Aura Finance',
+    apyIconUrls: ['./icons/balancer.png', './icons/aura.png'],
+    apyTokenSymbols: ['BAL', 'AURA'],
+    logoUrl: './icons/balancer-bbaUSD.png',
+    tokenAddress: addresses.V2.aura_bbiUSD.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.V2.aura_bbiUSD.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.V2.aura_bbiUSD.Underlying,
+        addresses.V2.aura_bbiUSD.PoolId,
+        CHAINS_ID.ETH_MAINNET,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.AURA,
+        params: ['bbiUSD', profitSharingCut15Percent],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'BAL', 'AURA'],
+  },
   balancer_wstETH_wETH_arbitrum: {
     isNew: true,
     category: VAULT_CATEGORIES_IDS.BALANCER,
@@ -788,7 +820,11 @@ module.exports = {
   aura_rETH: {
     isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
-    category: [VAULT_CATEGORIES_IDS.AURA, VAULT_CATEGORIES_IDS.BALANCER],
+    category: [
+      VAULT_CATEGORIES_IDS.AURA,
+      VAULT_CATEGORIES_IDS.BALANCER,
+      VAULT_CATEGORIES_IDS.ETH20,
+    ],
     displayName: 'rETH - WETH',
     subLabel: 'Aura Finance',
     apyIconUrls: ['./icons/balancer.png', './icons/aura.png'],
@@ -816,7 +852,11 @@ module.exports = {
   aura_wstETH: {
     isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
-    category: [VAULT_CATEGORIES_IDS.AURA, VAULT_CATEGORIES_IDS.BALANCER],
+    category: [
+      VAULT_CATEGORIES_IDS.AURA,
+      VAULT_CATEGORIES_IDS.BALANCER,
+      VAULT_CATEGORIES_IDS.ETH20,
+    ],
     displayName: 'wstETH - WETH',
     subLabel: 'Aura Finance',
     apyIconUrls: ['./icons/balancer.png', './icons/aura.png', './icons/ldo.png'],
