@@ -6,6 +6,72 @@ const strat30PercentFactor = '0.7'
 module.exports = [
   {
     chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'convex_USDT_WBTC_WETH_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.ARBITRUM_CURVE,
+      params: ['tricrypto'],
+    },
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://arbitrum.curve.fi/tricrypto/deposit">
+              curve.fi
+            </a>
+            and deposit <b>USDT</b>, <b>WBTC</b> and/or <b>ETH</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+    </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'convex_USDC_USDT_arbitrum',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.ARBITRUM_CURVE,
+      params: ['2pool'],
+    },
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://arbitrum.curve.fi/2pool/deposit">
+              curve.fi
+            </a>
+            and deposit <b>USDT</b>, <b>WBTC</b> and/or <b>ETH</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+    </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'balancer_wstETH_wETH_arbitrum',
     type: POOL_TYPES.INCENTIVE,
     tradingApyFunction: {
@@ -22,7 +88,7 @@ module.exports = [
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
-    rewardTokenSymbols: ['iFARM_arbitrum'],
+    rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
     <div class="help-message">
       <b>Deposit and stake:</b>
@@ -60,7 +126,7 @@ module.exports = [
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
-    rewardTokenSymbols: ['iFARM_arbitrum'],
+    rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
     <div class="help-message">
       <b>Deposit and stake:</b>
@@ -96,7 +162,7 @@ module.exports = [
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
-    rewardTokenSymbols: ['iFARM_arbitrum'],
+    rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
     <div class="help-message">
       <b>Deposit and stake:</b>
@@ -123,7 +189,7 @@ module.exports = [
     contractAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewPool,
     collateralAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -159,7 +225,7 @@ module.exports = [
     contractAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.NewPool,
     collateralAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -195,7 +261,7 @@ module.exports = [
     contractAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.NewPool,
     collateralAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -231,7 +297,7 @@ module.exports = [
     contractAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.NewPool,
     collateralAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -267,7 +333,7 @@ module.exports = [
     contractAddress: addresses.ARBITRUM_ONE.StargateUSDC_arbitrum.NewPool,
     collateralAddress: addresses.ARBITRUM_ONE.StargateUSDC_arbitrum.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -299,7 +365,7 @@ module.exports = [
     contractAddress: addresses.ARBITRUM_ONE.StargateUSDT_arbitrum.NewPool,
     collateralAddress: addresses.ARBITRUM_ONE.StargateUSDT_arbitrum.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -335,7 +401,7 @@ module.exports = [
       params: [addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -371,7 +437,7 @@ module.exports = [
       params: [addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -407,7 +473,7 @@ module.exports = [
       params: [addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -443,7 +509,7 @@ module.exports = [
       params: [addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -479,7 +545,7 @@ module.exports = [
       params: [addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
@@ -515,7 +581,7 @@ module.exports = [
       params: [addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM],
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
