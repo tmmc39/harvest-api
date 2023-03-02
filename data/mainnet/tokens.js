@@ -148,6 +148,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'BAL'],
   },
   convex_USDT_WBTC_WETH_arbitrum: {
+    isNew: true,
     chain: CHAINS_ID.ARBITRUM_ONE,
     category: VAULT_CATEGORIES_IDS.CONVEX,
     displayName: 'USDT-wBTC-ETH',
@@ -177,6 +178,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
   },
   convex_USDC_USDT_arbitrum: {
+    isNew: true,
     chain: CHAINS_ID.ARBITRUM_ONE,
     category: VAULT_CATEGORIES_IDS.CONVEX,
     displayName: 'USDC-USDT',
