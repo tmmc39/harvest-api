@@ -31,7 +31,11 @@ const getBoostAPY = async (poolAddress, networkId) => {
     } else if (types[i] == 'stakedMatic') {
       partApy = await getStakedMaticApy(token)
     } else if (types[i] == 'stakedEth') {
-      partApy = (await getStakedEthApy(token, networkId)) / 2
+      if (token == '0x5979D7b546E38E414F7E9822514be443A4800529') {
+        partApy = await getStakedEthApy('0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0', '1')
+      } else {
+        partApy = await getStakedEthApy(token, networkId)
+      }
     } else {
       console.error(`Balancer boost type: ${types[i]} not recognized`)
       continue

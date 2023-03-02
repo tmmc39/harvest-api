@@ -5,13 +5,16 @@ const {
   ESTIMATED_APY_TYPES,
   SUSHI_POOLS_IDS,
   BASIS_POOL_IDS,
+  ARBITRUM_SUSHI_POOLS_IDS,
 } = require('../constants')
 
 const addresses = require('./addresses.json')
 
 const profitSharingCut8Percent = '0.92'
+const profitSharingCut10Percent = '0.90'
 const profitSharingCut15Percent = '0.85'
 const profitSharingCut30Percent = '0.7'
+const profitSharingCut25Percent = '0.75'
 
 module.exports = {
   FARM: {
@@ -44,6 +47,593 @@ module.exports = {
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'WETH'],
+  },
+  balancer_wstETH_wETH_arbitrum: {
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.BALANCER,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wsteth-eth.png',
+    apyIconUrls: ['./icons/balancer.png', './icons/ldo.png'],
+    apyTokenSymbols: ['BAL', 'LDO'],
+    displayName: 'wstETH-ETH',
+    subLabel: 'Balancer',
+    tokenAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.PoolId,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_wstETH_wETH_arbitrum',
+          addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Gauge,
+          profitSharingCut10Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BAL'],
+  },
+  balancer_wstETH_USDC_arbitrum: {
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.BALANCER,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wsteth-usdc.png',
+    apyIconUrls: ['./icons/balancer.png', './icons/ldo.png'],
+    apyTokenSymbols: ['BAL', 'LDO'],
+    displayName: 'wstETH-USDC',
+    subLabel: 'Balancer',
+    tokenAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.PoolId,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_wstETH_USDC_arbitrum',
+          addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Gauge,
+          profitSharingCut10Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BAL'],
+  },
+  balancer_wBTC_wETH_USDC_arbitrum: {
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.BALANCER,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wbtc-eth-usdc.png',
+    apyIconUrls: ['./icons/balancer.png'],
+    apyTokenSymbols: ['BAL'],
+    displayName: 'wBTC-ETH-USDC',
+    subLabel: 'Balancer',
+    tokenAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.BALANCER,
+      params: [
+        addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.PoolId,
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_wBTC_wETH_USDC_arbitrum',
+          addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Gauge,
+          profitSharingCut10Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BAL'],
+  },
+  iFARM_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    decimals: '18',
+    tokenAddress: addresses.ARBITRUM_ONE.iFARM,
+    displayName: 'aiFARM',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.F_TOKEN, params: [addresses.iFARM, '18'] },
+  },
+  Curve_2pool_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: [VAULT_CATEGORIES_IDS.CURVE, VAULT_CATEGORIES_IDS.STABLECOINS],
+    logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#2pool',
+    decimals: '18',
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.Underlying,
+    displayName: 'USDC-USDT',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.CURVE_POOL,
+      params: [
+        addresses.ARBITRUM_ONE.Crv2Pool,
+        addresses.ARBITRUM_ONE.Crv2PoolToken,
+        '18',
+        ['USDC_arbitrum', 'USDT_arbitrum'],
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
+        params: [addresses.ARBITRUM_ONE.Crv2Pool, profitSharingCut25Percent],
+      },
+    ],
+    apyIconUrls: ['./icons/curve.png'],
+    apyTokenSymbols: ['CRV'],
+    cmcRewardTokenSymbols: ['iFARM', 'CRV'],
+  },
+  Curve_EursUsd_arbitrum: {
+    inactive: true,
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.CURVE,
+    logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#eurs',
+    decimals: '18',
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.Underlying,
+    displayName: 'EURS-USD',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.CURVE_POOL,
+      params: [
+        addresses.ARBITRUM_ONE.CrvEursUsdPool,
+        addresses.ARBITRUM_ONE.CrvEursUsdPoolToken,
+        '18',
+        ['EURS_arbitrum', 'Curve_2pool_arbitrum'],
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
+        params: [addresses.ARBITRUM_ONE.CrvEursUsdPool, profitSharingCut25Percent],
+      },
+    ],
+    apyIconUrls: [],
+    apyTokenSymbols: [],
+    cmcRewardTokenSymbols: ['iFARM', 'CRV'],
+  },
+  Curve_RenWbtc_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.CURVE,
+    logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#renbtc',
+    decimals: '18',
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.Underlying,
+    displayName: 'RENBTC-WBTC',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.CURVE_POOL,
+      params: [
+        addresses.ARBITRUM_ONE.CrvRenWbtcPool,
+        addresses.ARBITRUM_ONE.CrvRenWbtcPoolToken,
+        '18',
+        ['RENBTC_arbitrum', 'WBTC_arbitrum'],
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
+        params: [addresses.ARBITRUM_ONE.CrvRenWbtcPool, profitSharingCut25Percent],
+      },
+    ],
+    apyIconUrls: ['./icons/curve.png'],
+    apyTokenSymbols: ['CRV'],
+    cmcRewardTokenSymbols: ['iFARM', 'CRV'],
+  },
+  Curve_TriCrypto_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.CURVE,
+    logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#tricrypto',
+    decimals: '18',
+    tokenAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.Underlying,
+    displayName: 'WBTC-WETH-USDT',
+    subLabel: 'Curve',
+    vaultAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.CURVE_POOL,
+      params: [
+        addresses.ARBITRUM_ONE.CrvTriCryptoPool,
+        addresses.ARBITRUM_ONE.CrvTriCryptoToken,
+        '18',
+        ['WBTC_arbitrum', 'WETH_arbitrum', 'USDT_arbitrum'],
+        CHAINS_ID.ARBITRUM_ONE,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.ARBITRUM_CURVE,
+        params: [addresses.ARBITRUM_ONE.CrvTriCryptoPool, profitSharingCut25Percent],
+      },
+    ],
+    apyIconUrls: ['./icons/curve.png'],
+    apyTokenSymbols: ['CRV'],
+    cmcRewardTokenSymbols: ['iFARM', 'CRV'],
+  },
+  USDC_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/usdc.png',
+    tokenAddress: addresses.ARBITRUM_ONE.USDC,
+    decimals: '6',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.USDC] },
+  },
+  USDT_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/usdt.png',
+    tokenAddress: addresses.ARBITRUM_ONE.USDT,
+    decimals: '6',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.USDT] },
+  },
+  WBTC_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/wbtc.png',
+    tokenAddress: addresses.ARBITRUM_ONE.WBTC,
+    decimals: '8',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.WBTC] },
+  },
+  RENBTC_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/ren.png',
+    tokenAddress: addresses.ARBITRUM_ONE.RENBTC,
+    decimals: '8',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.RENBTC] },
+  },
+  WETH_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/eth.png',
+    tokenAddress: addresses.ARBITRUM_ONE.WETH,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.WETH] },
+  },
+  EURS_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/curve-eurs.png',
+    tokenAddress: addresses.ARBITRUM_ONE.EURS,
+    decimals: '2',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.EURS] },
+  },
+  STG_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/stg.png',
+    tokenAddress: addresses.ARBITRUM_ONE.STG,
+    decimals: '2',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.STG] },
+  },
+  StargateUSDC_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.STABLECOINS,
+    logoUrl: './icons/usdc.png',
+    decimals: '6',
+    tokenAddress: addresses.ARBITRUM_ONE.StargateUSDC_arbitrum.Underlying,
+    displayName: 'S*USDC',
+    subLabel: 'Stargate',
+    vaultAddress: addresses.ARBITRUM_ONE.StargateUSDC_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.STARGATE_LP_TOKEN,
+      params: ['StargateUSDC_arbitrum', 'USDC_arbitrum'],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.STARGATE,
+        params: [
+          '0', // pid
+          addresses.ARBITRUM_ONE.StargateRewardPool,
+          'StargateUSDC_arbitrum',
+          'STG_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    apyIconUrls: ['./icons/stg.png'],
+    apyTokenSymbols: ['STG'],
+    cmcRewardTokenSymbols: ['iFARM', 'STG'],
+  },
+  StargateUSDT_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.INACTIVE_ARBITRUM,
+    inactive: true,
+    logoUrl: './icons/usdt.png',
+    decimals: '6',
+    tokenAddress: addresses.ARBITRUM_ONE.StargateUSDT_arbitrum.Underlying,
+    displayName: 'S*USDT',
+    subLabel: 'Stargate',
+    vaultAddress: addresses.ARBITRUM_ONE.StargateUSDT_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.STARGATE_LP_TOKEN,
+      params: ['StargateUSDT_arbitrum', 'USDT_arbitrum'],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.STARGATE,
+        params: [
+          '1', // pid
+          addresses.ARBITRUM_ONE.StargateRewardPool,
+          'StargateUSDT_arbitrum',
+          'STG_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    apyIconUrls: ['./icons/stg.png'],
+    apyTokenSymbols: ['STG'],
+    cmcRewardTokenSymbols: ['iFARM', 'STG'],
+  },
+  Sushi_ETHDAI_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.SUSHI,
+    logoUrl: './icons/eth_dai.png',
+    apyIconUrls: ['./icons/sushi.png'],
+    apyTokenSymbols: ['SUSHI'],
+    displayName: 'ETH-DAI',
+    subLabel: 'SushiSwap',
+    tokenAddress: addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [
+        addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.Underlying,
+        'WETH_arbitrum',
+        'DAI_arbitrum',
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.SUSHI,
+        params: [
+          ARBITRUM_SUSHI_POOLS_IDS.ETH_DAI,
+          'WETH_arbitrum',
+          'DAI_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'ETH', 'DAI'],
+  },
+  Sushi_ETHGOHM_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.SUSHI,
+    logoUrl: './icons/eth-gohm.png',
+    apyIconUrls: ['./icons/sushi.png', './icons/ohm.png'],
+    apyTokenSymbols: ['SUSHI', 'GOHM'],
+    displayName: 'ETH-GOHM',
+    subLabel: 'SushiSwap',
+    tokenAddress: addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [
+        addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.Underlying,
+        'WETH_arbitrum',
+        'GOHM_arbitrum',
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.SUSHI,
+        params: [
+          ARBITRUM_SUSHI_POOLS_IDS.ETH_GOHM,
+          'WETH_arbitrum',
+          'GOHM_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'ETH', 'GOHM'],
+  },
+  Sushi_ETHMAGIC_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.SUSHI,
+    logoUrl: './icons/eth-magic.png',
+    apyIconUrls: ['./icons/sushi.png', './icons/magic.png'],
+    apyTokenSymbols: ['SUSHI', 'MAGIC'],
+    displayName: 'ETH-MAGIC',
+    subLabel: 'SushiSwap',
+    tokenAddress: addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [
+        addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.Underlying,
+        'WETH_arbitrum',
+        'MAGIC_arbitrum',
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.SUSHI,
+        params: [
+          ARBITRUM_SUSHI_POOLS_IDS.ETH_MAGIC,
+          'WETH_arbitrum',
+          'MAGIC_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'ETH', 'MAGIC'],
+  },
+  Sushi_ETHMIM_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.SUSHI,
+    logoUrl: './icons/eth-mim.png',
+    apyIconUrls: ['./icons/sushi.png', './icons/spell.png'],
+    apyTokenSymbols: ['SUSHI', 'SPELL'],
+    displayName: 'ETH-MIM',
+    subLabel: 'SushiSwap',
+    tokenAddress: addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [
+        addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.Underlying,
+        'WETH_arbitrum',
+        'MIM_arbitrum',
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.SUSHI,
+        params: [
+          ARBITRUM_SUSHI_POOLS_IDS.ETH_MIM,
+          'WETH_arbitrum',
+          'MIM_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'ETH', 'MIM', 'SPELL'],
+  },
+  Sushi_ETHSPELL_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.SUSHI,
+    logoUrl: './icons/eth-spell.png',
+    apyIconUrls: ['./icons/sushi.png', './icons/spell.png'],
+    apyTokenSymbols: ['SUSHI', 'SPELL'],
+    displayName: 'ETH-SPELL',
+    subLabel: 'SushiSwap',
+    tokenAddress: addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [
+        addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.Underlying,
+        'WETH_arbitrum',
+        'SPELL_arbitrum',
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.SUSHI,
+        params: [
+          ARBITRUM_SUSHI_POOLS_IDS.ETH_SPELL,
+          'WETH_arbitrum',
+          'SPELL_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'ETH', 'SPELL'],
+  },
+  Sushi_ETHSUSHI_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    category: VAULT_CATEGORIES_IDS.SUSHI,
+    logoUrl: './icons/sushi-eth.png',
+    apyIconUrls: ['./icons/sushi.png'],
+    apyTokenSymbols: ['SUSHI'],
+    displayName: 'ETH-SUSHI',
+    subLabel: 'SushiSwap',
+    tokenAddress: addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [
+        addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.Underlying,
+        'WETH_arbitrum',
+        'SUSHI_arbitrum',
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.SUSHI,
+        params: [
+          ARBITRUM_SUSHI_POOLS_IDS.ETH_SUSHI,
+          'WETH_arbitrum',
+          'SUSHI_arbitrum',
+          profitSharingCut25Percent,
+          CHAINS_ID.ARBITRUM_ONE,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'ETH', 'SUSHI'],
+  },
+  DAI_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    tokenAddress: addresses.ARBITRUM_ONE.DAI,
+    logoUrl: './icons/dai.png',
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.DAI] },
+  },
+  GOHM_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    tokenAddress: addresses.ARBITRUM_ONE.GOHM,
+    logoUrl: './icons/ohm.png',
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.GOHM] },
+  },
+  MAGIC_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    tokenAddress: addresses.ARBITRUM_ONE.MAGIC,
+    logoUrl: './icons/magic.png',
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.MAGIC] },
+  },
+  MIM_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    tokenAddress: addresses.ARBITRUM_ONE.MIM,
+    logoUrl: './icons/magic.png',
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.MIM] },
+  },
+  SPELL_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    tokenAddress: addresses.ARBITRUM_ONE.SPELL,
+    logoUrl: './icons/spell.png',
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.SPELL] },
+  },
+  SUSHI_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    tokenAddress: addresses.ARBITRUM_ONE.SUSHI,
+    logoUrl: './icons/sushi.png',
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.SUSHI] },
   },
   aura_auraBAL: {
     chain: CHAINS_ID.ETH_MAINNET,
@@ -202,11 +792,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_2EUR_agEUR',
           addresses.MATIC.V2.balancer_2EUR_agEUR.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -234,11 +825,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_2EUR_PAR',
           addresses.MATIC.V2.balancer_2EUR_PAR.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -545,11 +1137,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_bbamusd',
           addresses.MATIC.V2.balancer_bbamusd.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -607,11 +1200,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_tetuBal',
           addresses.MATIC.V2.balancer_tetuBal.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -639,11 +1233,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'balancer_2BRLUSD',
           addresses.MATIC.V2.balancer_2BRLUSD.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -693,8 +1288,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['balancer_2BRL', addresses.MATIC.V2.balancer_2BRL.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'balancer_2BRL',
+          addresses.MATIC.V2.balancer_2BRL.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL', 'SD'],
@@ -721,8 +1321,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['bal_MaticX', addresses.MATIC.V2.bal_MaticX.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'bal_MaticX',
+          addresses.MATIC.V2.bal_MaticX.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL'],
@@ -749,8 +1354,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['bal_stMatic', addresses.MATIC.V2.bal_stMatic.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'bal_stMatic',
+          addresses.MATIC.V2.bal_stMatic.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL', 'LDO'],
@@ -776,11 +1386,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'bal_POLYBASE',
           addresses.MATIC.V2.balancer_POLYBASE.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -3280,11 +3891,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
         params: [
           'bal_USDC_WETH_polygon',
           addresses.MATIC.V2.bal_USDC_WETH_polygon.Gauge,
           profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
         ],
       },
     ],
@@ -9161,8 +9773,13 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_POLYGON,
-        params: ['bal_STABLE', addresses.MATIC.V2.balancer_STABLE.Gauge, profitSharingCut8Percent],
+        type: ESTIMATED_APY_TYPES.BALANCER_GAUGE_SIDECHAIN,
+        params: [
+          'bal_STABLE',
+          addresses.MATIC.V2.balancer_STABLE.Gauge,
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL'],
