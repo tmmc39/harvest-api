@@ -526,7 +526,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['FARM', 'ETH', 'MIM', 'SPELL'],
   },
   Sushi_ETHSPELL_arbitrum: {
-    inactive: true,
+    inactive: true, //inactive
     chain: CHAINS_ID.ARBITRUM_ONE,
     category: VAULT_CATEGORIES_IDS.INACTIVE_ARBITRUM,
     logoUrl: './icons/eth-spell.png',
