@@ -1067,6 +1067,94 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['iFARM', 'BAL'],
   },
+  SWISE: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.SWISE,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['stakewise'],
+    },
+  },
+  LDO: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.LDO,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['lido-dao'],
+    },
+  },
+  wstETH: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.wstETH,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['wrapped-steth'],
+    },
+  },
+  wstETH_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: '',
+    tokenAddress: addresses.ARBITRUM_ONE.wstETH,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['wrapped-steth'],
+    },
+  },
+  stMATIC: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.stMATIC,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['lido-staked-matic'],
+    },
+  },
+  maticX: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.maticX,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['stader-maticx'],
+    },
+  },
+  pSD: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.SD,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['stader'],
+    },
+  },
+  pLDO: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.LDO,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['lido-dao'],
+    },
+  },
   amDAI: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: '',
@@ -3708,6 +3796,17 @@ module.exports = {
       params: [addresses.MATIC.V2.jarvis_JRTMAY22_USDC.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
     },
   },
+  pTUSD: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.pTUSD,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['true-usd'],
+    },
+  },
   JSGD: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: './icons/jsgd.svg',
@@ -4889,8 +4988,8 @@ module.exports = {
     decimals: '18',
     vaultAddress: null,
     priceFunction: {
-      type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
-      params: [addresses.BSC.wBNB, CHAINS_ID.BSC_MAINNET],
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['wbnb'],
     },
   },
   pUSDC: {
@@ -4951,6 +5050,17 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['iFARM', 'wMATIC'],
   },
+  MAI: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.MAI,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['mimatic'],
+    },
+  },
   BANANA: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: './icons/banana.png',
@@ -4958,8 +5068,8 @@ module.exports = {
     decimals: '18',
     vaultAddress: null,
     priceFunction: {
-      type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
-      params: [addresses.BANANA, CHAINS_ID.BSC_MAINNET],
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['apeswap-finance'],
     },
   },
   miFARM: {
@@ -4978,8 +5088,8 @@ module.exports = {
     displayName: 'WMATIC',
     vaultAddress: null,
     priceFunction: {
-      type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
-      params: [addresses.MATIC.WMATIC, CHAINS_ID.MATIC_MAINNET],
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['matic-network'],
     },
   },
   QUICK: {
@@ -5216,6 +5326,17 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['iFARM', 'FOX', 'WETH'],
   },
+  AURA: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.AURA,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['aura-finance'],
+    },
+  },
   BAL: {
     chain: CHAINS_ID.ETH_MAINNET,
     logoUrl: './icons/balancer.png',
@@ -5225,6 +5346,39 @@ module.exports = {
     priceFunction: {
       type: GET_PRICE_TYPES.COINGECKO_ID,
       params: ['balancer'],
+    },
+  },
+  pBAL: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: './icons/balancer.png',
+    tokenAddress: addresses.MATIC.pBAL,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['balancer'],
+    },
+  },
+  BAL_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: './icons/balancer.png',
+    tokenAddress: addresses.ARBITRUM_ONE.BAL,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['balancer'],
+    },
+  },
+  LDO_arbitrum: {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    logoUrl: '',
+    tokenAddress: addresses.ARBITRUM_ONE.LDO,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['lido-dao'],
     },
   },
   bal_BAL_WETH: {
