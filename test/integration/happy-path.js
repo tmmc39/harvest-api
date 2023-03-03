@@ -58,13 +58,15 @@ describe('Happy Paths', function () {
         .expect('Content-Type', /json/)
         .expect(200)
         .then(res => {
+          assert.exists(res.body.arbitrum)
           assert.exists(res.body.matic)
           assert.exists(res.body.eth)
           assert.exists(res.body.bsc)
           assert.equal(
             Object.keys(res.body.matic).length +
               Object.keys(res.body.eth).length +
-              Object.keys(res.body.bsc).length,
+              Object.keys(res.body.bsc).length +
+              Object.keys(res.body.arbitrum).length,
             allVaultsJsonArray.length,
           )
         })
@@ -76,11 +78,15 @@ describe('Happy Paths', function () {
         .expect('Content-Type', /json/)
         .expect(200)
         .then(res => {
+          assert(res.body.arbitrum)
           assert(res.body.matic)
           assert(res.body.eth)
           assert(res.body.bsc)
           assert.equal(
-            res.body.matic.length + res.body.eth.length + res.body.bsc.length,
+            res.body.matic.length +
+              res.body.eth.length +
+              res.body.bsc.length +
+              res.body.arbitrum.length,
             poolsJson.length,
           )
         })
@@ -88,6 +94,16 @@ describe('Happy Paths', function () {
   })
 
   describe('External ACTIVE_ENDPOINTS', () => {
+    it('queries /nanoly', () => {
+      return request(`http://localhost:${testPort}`)
+        .get(`/nanoly?key=${harvestKey}`)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .then(res => {
+          assert.equal(Object.keys(res.body).length, activeVaultsJsonArray.length + 3) // response must contain all active vaults + 3 special pools: iFARM, FARM/ETH, FARM/GRAIN
+        })
+    })
+
     it('queries /token-stats', () => {
       return request(`http://localhost:${testPort}`)
         .get(`/token-stats?key=${harvestKey}`)

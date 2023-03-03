@@ -39,6 +39,8 @@ const getProfitSharingFactor = chain => {
       return 0.92
     case CHAIN_TYPES.MATIC:
       return 0.92
+    case CHAIN_TYPES.ARBITRUM_ONE:
+      return 0.75
     default:
       return 0.7
   }
@@ -50,6 +52,7 @@ const getVaults = async () => {
   let fetchedETHVaults = [],
     fetchedBSCVaults = [],
     fetchedMATICVaults = [],
+    fetchedARBITRUMVaults = [],
     fetchedVaults,
     hasErrors = false
 
@@ -67,6 +70,13 @@ const getVaults = async () => {
 
   const maticVaultsBatches = chunk(
     Object.keys(tokensWithVault).filter(tokenId => tokens[tokenId].chain === CHAIN_TYPES.MATIC),
+    GET_VAULT_DATA_BATCH_SIZE,
+  )
+
+  const arbitrumVaultsBatches = chunk(
+    Object.keys(tokensWithVault).filter(
+      tokenId => tokens[tokenId].chain === CHAIN_TYPES.ARBITRUM_ONE,
+    ),
     GET_VAULT_DATA_BATCH_SIZE,
   )
 
@@ -96,6 +106,21 @@ const getVaults = async () => {
   })
   console.log('\n-- Done getting MATIC vaults data --')
 
+  console.log('\n-- Getting ARBITRUM vaults data --')
+  await forEach(arbitrumVaultsBatches, async batch => {
+    if (batch) {
+      try {
+        console.log('Getting vault data for: ', batch)
+        const vaultsData = await getVaultsData(batch)
+        fetchedARBITRUMVaults = fetchedARBITRUMVaults.concat(vaultsData)
+      } catch (err) {
+        hasErrors = true
+        console.error(`Failed to get vault data for: ${batch}`, err)
+      }
+    }
+  })
+  console.log('\n-- Done getting ARBITRUM vaults data --')
+
   console.log('\n-- Getting ETH vaults data --')
   await forEach(ethVaultsBatches, async batch => {
     try {
@@ -119,6 +144,10 @@ const getVaults = async () => {
       return acc
     }, {}),
     matic: fetchedMATICVaults.reduce((acc, vault) => {
+      acc[vault.id] = vault
+      return acc
+    }, {}),
+    arbitrum: fetchedARBITRUMVaults.reduce((acc, vault) => {
       acc[vault.id] = vault
       return acc
     }, {}),
@@ -198,6 +227,7 @@ const getPools = async () => {
   let fetchedBSCPools = [],
     fetchedETHPools = [],
     fetchedMATICPools = [],
+    fetchedARBITRUMPools = [],
     fetchedPools = [],
     hasErrors
 
@@ -235,6 +265,24 @@ const getPools = async () => {
 
     console.log('-- Done getting MATIC pool data --\n')
 
+    console.log('\n-- Getting ARBITRUM pool data --')
+
+    const arbitrumPoolBatches = chunk(
+      pools.filter(pool => pool.chain === CHAIN_TYPES.ARBITRUM_ONE),
+      GET_POOL_DATA_BATCH_SIZE,
+    )
+
+    if (size(arbitrumPoolBatches)) {
+      await forEach(arbitrumPoolBatches, async poolBatch => {
+        const poolData = await getPoolsData(poolBatch)
+        fetchedARBITRUMPools = fetchedARBITRUMPools.concat(poolData)
+      })
+    } else {
+      console.log('No pools available')
+    }
+
+    console.log('-- Done getting ARBITRUM pool data --\n')
+
     console.log('\n-- Getting ETH pool data --')
 
     const ethPoolBatches = chunk(
@@ -259,6 +307,7 @@ const getPools = async () => {
     bsc: fetchedBSCPools,
     eth: fetchedETHPools,
     matic: fetchedMATICPools,
+    arbitrum: fetchedARBITRUMPools,
   }
   hasErrors =
     (isArray(fetchedBSCPools) &&
@@ -266,7 +315,9 @@ const getPools = async () => {
     (isArray(fetchedETHPools) &&
       (fetchedETHPools.includes(undefined) || fetchedETHPools.includes(null))) ||
     (isArray(fetchedMATICPools) &&
-      (fetchedMATICPools.includes(undefined) || fetchedMATICPools.includes(null)))
+      (fetchedMATICPools.includes(undefined) || fetchedMATICPools.includes(null))) ||
+    (isArray(fetchedARBITRUMPools) &&
+      (fetchedARBITRUMPools.includes(undefined) || fetchedARBITRUMPools.includes(null)))
 
   await storeData(
     Cache,
@@ -519,6 +570,122 @@ const getTotalRevenue = async () => {
     hasErrors,
   )
   console.log('-- Done getting total revenue --\n')
+}
+
+const getNanolyData = async () => {
+  console.log('\n-- Getting Nanoly endpoint data --')
+
+  const vaults = await loadData(Cache, DB_CACHE_IDS.VAULTS)
+  const pools = await loadData(Cache, DB_CACHE_IDS.POOLS)
+  const token_stats = await loadData(Cache, DB_CACHE_IDS.STATS)
+  if (!vaults) {
+    console.log(`Error getting Nanoly endpoint data due to missing data. Vaults: ${vaults}`)
+    return
+  } else if (!pools) {
+    console.log(`Error getting Nanoly endpoint data due to missing data. Pools: ${pools}`)
+    return
+  }
+  let results = [],
+    hasErrors
+  for (let networkId in vaults) {
+    for (let symbol in vaults[networkId]) {
+      const vault = vaults[networkId][symbol]
+      let reward = 0
+      let rewards = {}
+      if (!vault.inactive) {
+        const pool = pools[networkId].find(
+          pool =>
+            pool.id === symbol ||
+            (pool.collateralAddress &&
+              pool.collateralAddress.toLowerCase() === vault.vaultAddress.toLowerCase()),
+        )
+        const address = vault.tokenAddress
+        const tokens = vault.displayName
+        let base
+        if (pool && pool.tradingApy) {
+          base = (Number(vault.estimatedApy) + Number(pool.tradingApy)) / 100
+        } else {
+          base = Number(vault.estimatedApy) / 100
+        }
+        if (pool && vault.id != 'IFARM') {
+          pool.rewardTokenSymbols.forEach((e, i) => {
+            e = e === 'miFARM' ? 'iFARM' : e
+            rewards[e] = Number(pool.rewardAPY[i]) / 100
+            reward = reward + Number(pool.rewardAPY[i]) / 100
+          })
+        } else {
+          reward = Number(token_stats.tokenStats['historicalAverageProfitSharingAPY']) / 100
+          rewards = {
+            FARM: reward,
+          }
+        }
+        const tvl = Number(vault.totalValueLocked).toFixed(2)
+
+        let result = {
+          chain: networkId,
+          tokens,
+          address,
+          base,
+          reward,
+          rewards,
+          url: 'https://app.harvest.finance/',
+          tvl,
+          active: true,
+        }
+        results.push(result)
+      }
+    }
+  }
+
+  //For special vaults
+  const farmWethPool = pools.eth.find(pool => pool.id === 'farm-weth')
+  if (farmWethPool) {
+    const reward = Number(farmWethPool.rewardAPY[0]) / 100
+    const rewards = {
+      FARM: reward,
+    }
+    const tvl = Number(farmWethPool.totalValueLocked).toFixed(2)
+    results.push({
+      chain: 'eth',
+      tokens: 'FARM-ETH',
+      address: farmWethPool.contractAddress,
+      base: Number(farmWethPool.tradingApy) / 100,
+      reward,
+      rewards,
+      url: 'https://app.harvest.finance/',
+      tvl,
+      active: true,
+    })
+  }
+
+  const farmGrainPool = pools.eth.find(pool => pool.id === 'farm-grain')
+  if (farmGrainPool) {
+    const reward = Number(farmGrainPool.rewardAPY[0]) / 100
+    const rewards = {
+      FARM: reward,
+    }
+    const tvl = Number(farmGrainPool.totalValueLocked).toFixed(2)
+    results.push({
+      chain: 'eth',
+      tokens: 'FARM-GRAIN',
+      address: farmGrainPool.contractAddress,
+      base: Number(farmGrainPool.tradingApy) / 100,
+      reward,
+      rewards,
+      url: 'https://app.harvest.finance/',
+      tvl,
+      active: true,
+    })
+  }
+  await storeData(
+    Cache,
+    DB_CACHE_IDS.STATS,
+    {
+      nanolyEndPointData: results,
+    },
+    hasErrors,
+  )
+  console.log('-- Done getting Nanoly endpoint data --\n')
 }
 
 const getCmc = async () => {
@@ -780,6 +947,12 @@ const runUpdateLoop = async () => {
     }
 
     await getCmc()
+    if (DEBUG_MODE) {
+      updateCallCountCache('cmc')
+      resetCallCount()
+    }
+
+    await getNanolyData()
     if (DEBUG_MODE) {
       updateCallCountCache('cmc')
       resetCallCount()

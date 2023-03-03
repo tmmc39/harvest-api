@@ -5,6 +5,7 @@ const boostInfo = require('./balancer-boost-info.json')
 const { executeTradingApyFunction } = require('../index.js')
 const { get7MAAPRs } = require('../../../lib/third-party/lido')
 const { getYearlyAPR } = require('../../../lib/third-party/rocket-pool')
+const { getApy: getIdleApy } = require('../../apys/implementations/idle-finance')
 
 const getBoostAPY = async (poolAddress, networkId) => {
   const poolBoostInfo = boostInfo[poolAddress]
@@ -26,12 +27,18 @@ const getBoostAPY = async (poolAddress, networkId) => {
     let partApy
     if (types[i] == 'Aave') {
       partApy = await getAaveApy(poolBoostInfo.aaveTags[i])
+    } else if (types[i] == 'Idle') {
+      partApy = await getIdleApy(poolBoostInfo.symbols[i], poolBoostInfo.idleTokens[i], 1)
     } else if (types[i] == 'balLP') {
       partApy = await getLPApy(token, networkId)
     } else if (types[i] == 'stakedMatic') {
       partApy = await getStakedMaticApy(token)
     } else if (types[i] == 'stakedEth') {
-      partApy = (await getStakedEthApy(token, networkId)) / 2
+      if (token == '0x5979D7b546E38E414F7E9822514be443A4800529') {
+        partApy = await getStakedEthApy('0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0', '1')
+      } else {
+        partApy = await getStakedEthApy(token, networkId)
+      }
     } else {
       console.error(`Balancer boost type: ${types[i]} not recognized`)
       continue
