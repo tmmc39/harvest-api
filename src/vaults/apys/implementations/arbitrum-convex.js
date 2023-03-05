@@ -1,6 +1,6 @@
 const { get } = require('lodash')
 const { cachedAxios } = require('../../../lib/db/models/cache.js')
-const {ARBITRUM_CONVEX_API_URL } = require('../../../lib/constants')
+const { ARBITRUM_CONVEX_API_URL } = require('../../../lib/constants')
 
 const getApy = async (address, poolId, profitSharingFactor) => {
   let apy
