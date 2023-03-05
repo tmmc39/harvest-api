@@ -207,7 +207,7 @@ module.exports = {
         params: [
           addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.Miner,
           addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.PoolId,
-          profitSharingCut25Percent,
+          profitSharingCut10Percent,
         ],
       },
     ],
@@ -241,7 +241,7 @@ module.exports = {
         params: [
           addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.Miner,
           addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.PoolId,
-          profitSharingCut25Percent,
+          profitSharingCut10Percent,
         ],
       },
     ],
