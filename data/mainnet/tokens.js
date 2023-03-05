@@ -56,7 +56,7 @@ module.exports = {
       VAULT_CATEGORIES_IDS.BALANCER,
       VAULT_CATEGORIES_IDS.STABLECOINS,
     ],
-    displayName: 'iDAI-iUSDC-iUSDT',
+    displayName: 'Testing... iDAI-iUSDC-iUSDT',
     subLabel: 'Idle - Aura Finance',
     apyIconUrls: ['./icons/balancer.png', './icons/aura.png'],
     apyTokenSymbols: ['BAL', 'AURA'],
