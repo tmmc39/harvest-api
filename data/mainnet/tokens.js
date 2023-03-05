@@ -203,8 +203,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0'],
+        type: ESTIMATED_APY_TYPES.ARBITRUM_CONVEX,
+        params: [
+          addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.Miner,
+          addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.PoolId,
+          profitSharingCut10Percent,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
@@ -233,8 +237,12 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0'],
+        type: ESTIMATED_APY_TYPES.ARBITRUM_CONVEX,
+        params: [
+          addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.Miner,
+          addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.PoolId,
+          profitSharingCut10Percent,
+        ],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
