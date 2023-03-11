@@ -40,8 +40,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'convex_USDT_WBTC_WETH_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.convex_USDT_WBTC_WETH_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.convex_USDT_WBTC_WETH_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.convex_USDT_WBTC_WETH_arbitrum.NewVault,
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -73,8 +73,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'convex_USDC_USDT_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.convex_USDC_USDT_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.convex_USDC_USDT_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.convex_USDC_USDT_arbitrum.NewVault,
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -109,14 +109,14 @@ module.exports = [
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
       params: [
-        addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.V2.balancer_wstETH_wETH_arbitrum.Underlying,
         'balancerv2_arbitrum',
         true,
         CHAINS_ID.ARBITRUM_ONE,
       ],
     },
-    contractAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.balancer_wstETH_wETH_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.balancer_wstETH_wETH_arbitrum.NewVault,
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -127,7 +127,7 @@ module.exports = [
       <ol class="numeric-list">
         <li>
           Go to&nbsp;
-          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.balancer_wstETH_wETH_arbitrum.PoolId}">
+          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.V2.balancer_wstETH_wETH_arbitrum.PoolId}">
             balancer
           </a>
           and invest <b>ETH</b>
@@ -147,14 +147,14 @@ module.exports = [
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
       params: [
-        addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.V2.balancer_wstETH_USDC_arbitrum.Underlying,
         'balancerv2_arbitrum',
         true,
         CHAINS_ID.ARBITRUM_ONE,
       ],
     },
-    contractAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.balancer_wstETH_USDC_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.balancer_wstETH_USDC_arbitrum.NewVault,
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -165,7 +165,7 @@ module.exports = [
       <ol class="numeric-list">
         <li>
           Go to&nbsp;
-          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.balancer_wstETH_USDC_arbitrum.PoolId}">
+          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.V2.balancer_wstETH_USDC_arbitrum.PoolId}">
             balancer
           </a>
           and invest <b>ETH</b> and/or <b>USDC</b>
@@ -185,12 +185,12 @@ module.exports = [
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
       params: [
-        addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
+        addresses.ARBITRUM_ONE.V2.balancer_wBTC_wETH_USDC_arbitrum.Underlying,
         'balancerv2_arbitrum',
       ],
     },
-    contractAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.balancer_wBTC_wETH_USDC_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.balancer_wBTC_wETH_USDC_arbitrum.NewVault,
     rewardAPY: [],
     rewardAPR: null,
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -201,7 +201,7 @@ module.exports = [
       <ol class="numeric-list">
         <li>
           Go to&nbsp;
-          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.balancer_wBTC_wETH_USDC_arbitrum.PoolId}">
+          <a target="_blank" rel="noopener noreferrer" href="https://app.balancer.fi/#/arbitrum/pool/${addresses.ARBITRUM_ONE.V2.balancer_wBTC_wETH_USDC_arbitrum.PoolId}">
             balancer
           </a>
           and invest <b>wBTC</b>, <b>ETH</b> and/or <b>USDC</b>
@@ -218,8 +218,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Curve_2pool_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Curve_2pool_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Curve_2pool_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Curve_2pool_arbitrum.NewVault,
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
@@ -254,8 +254,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Curve_EursUsd_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Curve_EursUsd_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Curve_EursUsd_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Curve_EursUsd_arbitrum.NewVault,
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
@@ -290,8 +290,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Curve_RenWbtc_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Curve_RenWbtc_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Curve_RenWbtc_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Curve_RenWbtc_arbitrum.NewVault,
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
@@ -326,8 +326,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Curve_TriCrypto_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Curve_TriCrypto_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Curve_TriCrypto_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Curve_TriCrypto_arbitrum.NewVault,
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
@@ -362,8 +362,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'StargateUSDC_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.StargateUSDC_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.StargateUSDC_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.StargateUSDC_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.StargateUSDC_arbitrum.NewVault,
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
@@ -394,8 +394,8 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'StargateUSDT_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.StargateUSDT_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.StargateUSDT_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.StargateUSDT_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.StargateUSDT_arbitrum.NewVault,
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
     rewardTokenSymbols: ['iFARM'],
@@ -426,11 +426,11 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Sushi_ETHDAI_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHDAI_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHDAI_arbitrum.NewVault,
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
-      params: [addresses.ARBITRUM_ONE.Sushi_ETHDAI_arbitrum.Underlying, 'sushiswap_arbitrum'],
+      params: [addresses.ARBITRUM_ONE.V2.Sushi_ETHDAI_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -462,11 +462,11 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Sushi_ETHGOHM_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHGOHM_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHGOHM_arbitrum.NewVault,
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
-      params: [addresses.ARBITRUM_ONE.Sushi_ETHGOHM_arbitrum.Underlying, 'sushiswap_arbitrum'],
+      params: [addresses.ARBITRUM_ONE.V2.Sushi_ETHGOHM_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -498,11 +498,11 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Sushi_ETHMAGIC_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHMAGIC_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHMAGIC_arbitrum.NewVault,
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
-      params: [addresses.ARBITRUM_ONE.Sushi_ETHMAGIC_arbitrum.Underlying, 'sushiswap_arbitrum'],
+      params: [addresses.ARBITRUM_ONE.V2.Sushi_ETHMAGIC_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -534,11 +534,11 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Sushi_ETHMIM_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHMIM_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHMIM_arbitrum.NewVault,
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
-      params: [addresses.ARBITRUM_ONE.Sushi_ETHMIM_arbitrum.Underlying, 'sushiswap_arbitrum'],
+      params: [addresses.ARBITRUM_ONE.V2.Sushi_ETHMIM_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -570,11 +570,11 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Sushi_ETHSPELL_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHSPELL_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHSPELL_arbitrum.NewVault,
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
-      params: [addresses.ARBITRUM_ONE.Sushi_ETHSPELL_arbitrum.Underlying, 'sushiswap_arbitrum'],
+      params: [addresses.ARBITRUM_ONE.V2.Sushi_ETHSPELL_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
@@ -606,11 +606,11 @@ module.exports = [
     chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'Sushi_ETHSUSHI_arbitrum',
     type: POOL_TYPES.INCENTIVE,
-    contractAddress: addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.NewPool,
-    collateralAddress: addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.NewVault,
+    contractAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHSUSHI_arbitrum.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.Sushi_ETHSUSHI_arbitrum.NewVault,
     tradingApyFunction: {
       type: TRADING_APY_TYPES.LP,
-      params: [addresses.ARBITRUM_ONE.Sushi_ETHSUSHI_arbitrum.Underlying, 'sushiswap_arbitrum'],
+      params: [addresses.ARBITRUM_ONE.V2.Sushi_ETHSUSHI_arbitrum.Underlying, 'sushiswap_arbitrum'],
     },
     rewardAPY: [],
     rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
