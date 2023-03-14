@@ -9,7 +9,7 @@ const getApy = async (address, poolId, profitSharingFactor) => {
     let poolName = 'arbitrum-' + address.toLowerCase() + '-' + poolId
     const response = await cachedAxios.get(ARBITRUM_CONVEX_API_URL)
     const apyResult = get(response, `data.apys.` + poolName, [])
-    apy = (apyResult.baseApy + apyResult.crvApy) * profitSharingFactor
+    apy = (apyResult.crvApy + apyResult.cvxApy) * profitSharingFactor
   } catch (err) {
     console.error('Arbitrum Convex API error: ', err)
     apy = 0
