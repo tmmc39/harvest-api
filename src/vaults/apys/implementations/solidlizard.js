@@ -21,6 +21,7 @@ const getApy = async (underlying, gauge, reduction) => {
     .times(slizRewardRate)
     .times(86400)
     .times(365)
+    .div(2.5)
     .div(gaugeDerivedSupply)
     .div(lpTokenPrice)
     .div(1e18)
