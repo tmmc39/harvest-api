@@ -89,6 +89,7 @@ const VAULT_CATEGORIES_NAMES = {
   MESHSWAP: 'MeshSwap',
   APESTAKE: 'ApeStake',
   AURA: 'Aura',
+  SOLIDLIZARD: 'SolidLizard',
 }
 
 const CHAINS_ID = {
