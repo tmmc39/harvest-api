@@ -38,6 +38,122 @@ module.exports = [
   },
   {
     chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'lizard_SLIZ_ETH',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.V2.lizard_SLIZ_ETH.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.lizard_SLIZ_ETH.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://solidlizard.finance/liquidity/0x751f3b8ca139bc1f3482b193297485f14208826a">
+              solidlizard.finance
+            </a>
+            and deposit <b>SLIZ</b> and <b>WETH</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+    </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'lizard_ETH_USDC',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.V2.lizard_ETH_USDC.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.lizard_ETH_USDC.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://solidlizard.finance/liquidity/0xe20f93279ff3538b1ad70d11ba160755625e3400">
+              solidlizard.finance
+            </a>
+            and deposit <b>WETH</b> and <b>USDC</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+    </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'lizard_agEUR_USDC',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.V2.lizard_agEUR_USDC.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.lizard_agEUR_USDC.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://solidlizard.finance/liquidity/0x5cd95bc186e41419e6b48a0153833c8105781292">
+              solidlizard.finance
+            </a>
+            and deposit <b>agEUR</b> and <b>USDC</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+    </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
+    id: 'lizard_LUSD_USDC',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.ARBITRUM_ONE.V2.lizard_LUSD_USDC.NewPool,
+    collateralAddress: addresses.ARBITRUM_ONE.V2.lizard_LUSD_USDC.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.ARBITRUM_ONE.iFARM],
+    rewardTokenSymbols: ['iFARM'],
+    stakeAndDepositHelpMessage: `
+      <div class="help-message">
+        <b>Deposit and stake:</b>
+        <ol class="numeric-list">
+          <li>
+            Go to&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="https://solidlizard.finance/liquidity/0xb1e9b823295b3c69ac651c05d987b67189ff20ad">
+              solidlizard.finance
+            </a>
+            and deposit <b>LUSD</b> and <b>USDC</b>
+          </li>
+          <li>
+            Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+            &quot;Stake for rewards&quot; checked for staking
+          </li>
+        </ol>
+    </div>
+   `,
+  },
+  {
+    chain: CHAINS_ID.ARBITRUM_ONE,
     id: 'convex_USDT_WBTC_WETH_arbitrum',
     type: POOL_TYPES.INCENTIVE,
     contractAddress: addresses.ARBITRUM_ONE.V2.convex_USDT_WBTC_WETH_arbitrum.NewPool,

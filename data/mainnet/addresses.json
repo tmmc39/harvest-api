@@ -2583,7 +2583,38 @@
     "BAL": "0x040d1EdC9569d4Bab2D15287Dc5A4F10F56a56B8",
     "LDO": "0x13Ad51ed4F1B7e9Dc168d8a00cB3f4dDD85EfA60",
     "IArbitrumGasInfo": "0x000000000000000000000000000000000000006C",
+    "agEUR": "0xFA5Ed56A203466CbBC2430a43c66b9D8723528E7",
+    "LUSD": "0x93b346b6BC2548dA6A1E7d98E9a421B42541425b",
+    "SLIZ": "0x463913D3a3D3D291667D53B8325c598Eb88D3B0e",
     "V2": {
+      "lizard_SLIZ_ETH": {
+        "Underlying": "0x751F3B8ca139bC1F3482b193297485f14208826a",
+        "NewVault": "0xA3B642407b7d707DCC64Db9049de6470fD5BC808",
+        "NewStrategy": "0xa1E8472463ab71763462cB648094814Be4dD178D",
+        "NewPool": "0x8569714E513E15d7857E945667312B7cE487A436",
+        "Gauge": "0x549855586afc1283E90295088ba5Eb51E7236ae8"
+      },
+      "lizard_ETH_USDC": {
+        "Underlying": "0xe20F93279fF3538b1ad70D11bA160755625e3400",
+        "NewVault": "0x1d95957679f2e55A6575Da834929af2b3f3f3CDe",
+        "NewStrategy": "0x8e704012FAC3054ad0047a4a8a5932C458AF02cE",
+        "NewPool": "0x75569392B7A43d6753602303790DF614dF149d74",
+        "Gauge": "0x0322CEbACF1f235913bE3FCE407F9F81632ede8B"
+      },
+      "lizard_agEUR_USDC": {
+        "Underlying": "0x5cd95bc186E41419e6B48a0153833C8105781292",
+        "NewVault": "0x533191aD59C2eF0697993bFBF057ab7C12DAE75a",
+        "NewStrategy": "0xC67b61C2a78e314397527F485CA75Fd1AE6D7093",
+        "NewPool": "0x6617a3795e5F73D5bbE525D4b9996cee7d11cb35",
+        "Gauge": "0x12981565263628164cDFA32290EBCcdbd7e5cCa4"
+      },
+      "lizard_LUSD_USDC": {
+        "Underlying": "0xB1E9b823295B3C69ac651C05D987B67189ff20AD",
+        "NewVault": "0x17c886EBB615887981Ff4687Fe66c3a313ED8E96",
+        "NewStrategy": "0xFDbB3d31619fb99b20Bd391F3C335D8629157D52",
+        "NewPool": "0x9a0D995Cd7E2729494abD98C0fB1c2eAe058c16f",
+        "Gauge": "0xa4f536393E277DC63ECfa869d901b4f81cc5462C"
+      },
       "Curve_2pool_arbitrum": {
         "doHardwork": false,
         "Underlying": "0x7f90122BF0700F9E7e1F688fe926940E8839F353",
@@ -2739,7 +2770,7 @@
         "NewPool": "0x200e629872dDaf944159b706b1C6eC4fE80e93fa",
         "Miner": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
         "PoolId": "1"
-      }  
+      }
     }
   }
 }
