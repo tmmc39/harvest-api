@@ -410,8 +410,9 @@ module.exports = {
     priceFunction: { type: GET_PRICE_TYPES.F_TOKEN, params: [addresses.iFARM, '18'] },
   },
   Curve_2pool_arbitrum: {
+    inactive: true,
     chain: CHAINS_ID.ARBITRUM_ONE,
-    category: [VAULT_CATEGORIES_IDS.CURVE, VAULT_CATEGORIES_IDS.STABLECOINS],
+    category: VAULT_CATEGORIES_IDS.INACTIVE_ARBITRUM,
     logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#2pool',
     decimals: '18',
     tokenAddress: addresses.ARBITRUM_ONE.V2.Curve_2pool_arbitrum.Underlying,
@@ -434,8 +435,8 @@ module.exports = {
         params: [addresses.ARBITRUM_ONE.Crv2Pool, profitSharingCut25Percent],
       },
     ],
-    apyIconUrls: ['./icons/curve.png'],
-    apyTokenSymbols: ['CRV'],
+    apyIconUrls: [],
+    apyTokenSymbols: [],
     cmcRewardTokenSymbols: ['iFARM', 'CRV'],
   },
   Curve_EursUsd_arbitrum: {
@@ -499,8 +500,9 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'CRV'],
   },
   Curve_TriCrypto_arbitrum: {
+    inactive: true,
     chain: CHAINS_ID.ARBITRUM_ONE,
-    category: VAULT_CATEGORIES_IDS.CURVE,
+    category: VAULT_CATEGORIES_IDS.INACTIVE_ARBITRUM,
     logoUrl: './icons/curve-crypto-icons-stack-2-arbitrum.svg#tricrypto',
     decimals: '18',
     tokenAddress: addresses.ARBITRUM_ONE.V2.Curve_TriCrypto_arbitrum.Underlying,
@@ -524,8 +526,8 @@ module.exports = {
       },
     ],
     apyIconUrls: ['./icons/curve.png'],
-    apyTokenSymbols: ['CRV'],
-    cmcRewardTokenSymbols: ['iFARM', 'CRV'],
+    apyTokenSymbols: [],
+    cmcRewardTokenSymbols: [],
   },
   USDC_arbitrum: {
     chain: CHAINS_ID.ARBITRUM_ONE,
