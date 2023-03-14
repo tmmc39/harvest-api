@@ -104,7 +104,7 @@ module.exports = {
         params: [
           addresses.ARBITRUM_ONE.V2.lizard_SLIZ_ETH.Underlying,
           addresses.ARBITRUM_ONE.V2.lizard_SLIZ_ETH.Gauge,
-          '0.9',
+          profitSharingCut10Percent,
         ],
       },
     ],
@@ -136,7 +136,7 @@ module.exports = {
         params: [
           addresses.ARBITRUM_ONE.V2.lizard_ETH_USDC.Underlying,
           addresses.ARBITRUM_ONE.V2.lizard_ETH_USDC.Gauge,
-          '0.9',
+          profitSharingCut10Percent,
         ],
       },
     ],
@@ -168,7 +168,7 @@ module.exports = {
         params: [
           addresses.ARBITRUM_ONE.V2.lizard_agEUR_USDC.Underlying,
           addresses.ARBITRUM_ONE.V2.lizard_agEUR_USDC.Gauge,
-          '0.9',
+          profitSharingCut10Percent,
         ],
       },
     ],
@@ -200,7 +200,7 @@ module.exports = {
         params: [
           addresses.ARBITRUM_ONE.V2.lizard_LUSD_USDC.Underlying,
           addresses.ARBITRUM_ONE.V2.lizard_LUSD_USDC.Gauge,
-          '0.9',
+          profitSharingCut10Percent,
         ],
       },
     ],
